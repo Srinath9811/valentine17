@@ -92,18 +92,9 @@ button {
 // 🔹 PERSONALIZE NAME HERE
 document.getElementById("name").innerText = "Darsana";
 
-// YES button grows
-let yesSize = 26;
-setInterval(() => {
-    yesSize += 2;
-    document.getElementById("yes").style.fontSize = yesSize + "px";
-}, 1000);
-
 // NO button escape logic
-let noCount = 0;
 
 function moveNo() {
-    noCount++;
     const noBtn = document.getElementById("no");
 
     const x = Math.random() * 250;
@@ -111,12 +102,7 @@ function moveNo() {
 
     noBtn.style.left = x + "px";
     noBtn.style.top = y + "px";
-
-    if (noCount >= 3) {
-        noBtn.style.display = "none";
-    }
 }
-
 // YES clicked
 function yesClicked() {
     document.body.innerHTML = `
