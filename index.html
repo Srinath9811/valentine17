@@ -87,20 +87,20 @@ button {
 
     <div class="buttons">
         <button id="yes" onclick="yesClicked()">YES 😍</button>
-        <button id="no" onmouseover="moveNo()">NO 🙃</button>
+        <button id="no" onmouseenter="moveNo()">NO 🙃</button>
     </div>
 </div>
 
 <script>
 // 🔹 CHANGE HER NAME HERE
-document.getElementById("name").innerText = "Darsana";
+document.getElementById("name").innerText = "";
 
 // NO button moves away (never disappears)
 function moveNo() {
     const noBtn = document.getElementById("no");
 
-    const x = Math.random() * 250;
-    const y = Math.random() * 100;
+    const x = Math.random() * 400;
+    const y = Math.random() * 200;
 
     noBtn.style.left = x + "px";
     noBtn.style.top = y + "px";
@@ -111,14 +111,14 @@ function yesClicked() {
     document.body.innerHTML = `
         <h1 style="color:white;text-align:center;margin-top:40vh;font-size:45px;">
             YAYYY 💕🥰<br>
-            You just made my day ❤️
+            I Said Yes ❤️
         </h1>
     `;
 
     // WhatsApp redirect after 3 seconds
     setTimeout(() => {
         window.location.href =
-        "https://wa.me/9193468257707?text=I%20said%20YES%20😳❤️";
+        "https://wa.me/919346825707?text=I%20said%20YES%20😳❤️";
     }, 3000);
 }
 
