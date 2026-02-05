@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Be My Valentine 💘</title>
+
+<style>
+body {
+    height: 100vh;
+    margin: 0;
+    background: linear-gradient(135deg, #ff5f9e, #ff9966);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: Arial, sans-serif;
+    overflow: hidden;
+}
+
+.card {
+    background: white;
+    padding: 40px;
+    border-radius: 20px;
+    text-align: center;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+    position: relative;
+    z-index: 2;
+}
+
+h1 {
+    color: #ff2e63;
+    margin-bottom: 30px;
+}
+
+.buttons {
+    position: relative;
+    height: 150px;
+}
+
+button {
+    padding: 15px 35px;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    position: absolute;
+}
+
+#yes {
+    background: #ff2e63;
+    color: white;
+    font-size: 26px;
+    box-shadow: 0 0 25px #ff2e63;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+#no {
+    background: #999;
+    color: white;
+    top: 80px;
+    left: 50%;
+}
+
+/* Floating hearts */
+.heart {
+    position: absolute;
+    bottom: -20px;
+    color: pink;
+    font-size: 20px;
+    animation: floatUp 6s linear infinite;
+    opacity: 0.7;
+}
+
+@keyframes floatUp {
+    from { transform: translateY(0); }
+    to { transform: translateY(-110vh); }
+}
+</style>
+</head>
+
+<body>
+
+<div class="card">
+    <h1>Hey <span id="name">Beautiful</span> 💖<br>Will you be my Valentine?</h1>
+
+    <div class="buttons">
+        <button id="yes" onclick="yesClicked()">YES 😍</button>
+        <button id="no" onmouseover="moveNo()">NO 🙃</button>
+    </div>
+</div>
+
+<script>
+// 🔹 PERSONALIZE NAME HERE
+document.getElementById("name").innerText = "Darsana";
+
+// YES button grows
+let yesSize = 26;
+setInterval(() => {
+    yesSize += 2;
+    document.getElementById("yes").style.fontSize = yesSize + "px";
+}, 1000);
+
+// NO button escape logic
+let noCount = 0;
+
+function moveNo() {
+    noCount++;
+    const noBtn = document.getElementById("no");
+
+    const x = Math.random() * 250;
+    const y = Math.random() * 100;
+
+    noBtn.style.left = x + "px";
+    noBtn.style.top = y + "px";
+
+    if (noCount >= 3) {
+        noBtn.style.display = "none";
+    }
+}
+
+// YES clicked
+function yesClicked() {
+    document.body.innerHTML = `
+        <h1 style="color:white;text-align:center;margin-top:40vh;font-size:50px;">
+        YAYYYY 💕🥰<br>
+        I Said Yes ❤️
+        </h1>`;
+
+    // Redirect to WhatsApp after 3 seconds
+    setTimeout(() => {
+        window.location.href =
+        "https://wa.me/919346825707?text=I%20said%20YES%20😳❤️";
+    }, 3000);
+}
+
+// Floating hearts generator
+setInterval(() => {
+    const heart = document.createElement("div");
+    heart.className = "heart";
+    heart.innerHTML = "❤️";
+    heart.style.left = Math.random() * 100 + "vw";
+    heart.style.fontSize = Math.random() * 20 + 15 + "px";
+    document.body.appendChild(heart);
+
+    setTimeout(() => heart.remove(), 6000);
+}, 300);
+</script>
+
+</body>
+</html>
